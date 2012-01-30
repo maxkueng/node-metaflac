@@ -1,6 +1,6 @@
 {
   "name": "metaflac",
-  "description": "A MusicBrinaz XML Web Service Version 2 client",
+  "description": "A node.js wrapper for metaflac",
   "keywords" : [ "metaflac" ], 
   "version": "0.1.0",
   "homepage": "http://maxkueng.com/node-metaflac",
