@@ -1,0 +1,25 @@
+{
+  "name": "metaflac",
+  "description": "A MusicBrinaz XML Web Service Version 2 client",
+  "keywords" : [ "metaflac" ], 
+  "version": "0.1.0",
+  "homepage": "http://maxkueng.com/node-metaflac",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/maxkueng/node-metaflac.git"
+  },
+  "author": "Max Kueng <me@maxkueng.com> (http://maxkueng.com/)",
+  "directories": {
+    "lib": "./lib"
+  },
+  "dependencies" : {
+  }, 
+  "engines": ["node >=0.4.0"], 
+  "main" : "./lib/metaflac", 
+  "licenses" : [ 
+    { 
+	  "type" : "MIT", 
+      "url" : "https://github.com/maxkueng/node-metaflac/raw/master/LICENSE"
+    }
+  ]
+}
