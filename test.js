@@ -2,8 +2,8 @@ var metaflac = require('./lib/metaflac');
 var path = require('path');
 var util = require('util');
 
-//var filePath = 'data/Zeigeist - The Jade Motel/1 - Humanitarianism.flac';
-var filePath = 'data/B12 - 1996 - Time Tourist (album)/10 - Redcell - Radiophonic Workshop.flac';
+var filePath = 'data/Zeigeist - The Jade Motel/1 - Humanitarianism.flac';
+//var filePath = 'data/B12 - 1996 - Time Tourist (album)/10 - Redcell - Radiophonic Workshop.flac';
 filePath = path.resolve(filePath);
 
 metaflac.showMD5sum([], filePath, function (err, sum) {
@@ -61,19 +61,28 @@ metaflac.showTag(['noUTF8Convert'], filePath, 'MUSICBRAINZ_DISCID', function (er
 	if (value) console.log(value);
 });
 
+/*
 metaflac.importPictureFrom([], filePath, 'xxx.jpg', function (err, value) {
 	if (err) console.log(err);
 	if (value) console.log(value);
 });
+*/
 
+/*
 metaflac.exportPictureTo([], filePath, 'xxx.jpg', function (err, value) {
 	if (err) console.log(err);
 	if (value) console.log(value);
 });
+*/
 
-metaflac.list([
-	[ 'blockType', 'VORBIS_COMMENT' ]
-], filePath, function (err, value) {
+metaflac.vorbisComment(filePath, function (err, value) {
 	if (err) console.log(err);
 	if (value) console.log(value);
 });
+
+/*metaflac.list([
+	[ 'blockType', 'PICTURE' ], 
+], filePath, function (err, value) {
+	if (err) console.log(err);
+	if (value) console.log(value);
+});*/
