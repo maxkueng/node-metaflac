@@ -24,7 +24,7 @@ var mb = require('metaflac');
  - `withFilename` Prefix each output line with the FLAC file name (the default if more than one FLAC file is specified). 
  - `noFilename` Do not prefix each output line with the FLAC file name (the default if only one FLAC file is specified). 
  - `noUTF8Convert` Do not convert tags from UTF-8 to local charset, or vice versa. This is useful for scripts, and setting tags in situations where the locale is wrong. 
- - `dontUsepadding` By default metaflac tries to use padding where possible to avoid rewriting the entire file if the metadata size changes. Use this option to tell metaflac to not take advantage of padding this way.
+ - `dontUsePadding` By default metaflac tries to use padding where possible to avoid rewriting the entire file if the metadata size changes. Use this option to tell metaflac to not take advantage of padding this way.
 
 ### Show MD5 Sum
 
@@ -57,12 +57,29 @@ metaflac.showMaxBlocksize([], './beautiful-song.flac', function (err, blocksize)
 });
 ```
 
+### Show Framesize
+
+`--show-min-framesize` Show the minimum frame size from the STREAMINFO block. 
+
+```javascript
+metaflac.showMinFramesize([], './beautiful-song.flac', function (err, framesize) {
+	if (err) { console.log('An error occurred'); return; }
+	console.log('The minimum framesize is', framesize);
+});
+```
+
+`--show-max-framesize` Show the maximum frame size from the STREAMINFO block. 
+
+```javascript
+metaflac.showMaxFramesize([], './beautiful-song.flac', function (err, framesize) {
+	if (err) { console.log('An error occurred'); return; }
+	console.log('The maximum framesize is', framesize);
+});
+```
 
 
---show-min-framesize
-    Show the minimum frame size from the STREAMINFO block. 
---show-max-framesize
-    Show the maximum frame size from the STREAMINFO block. 
+
+
 --show-sample-rate
     Show the sample rate from the STREAMINFO block. 
 --show-channels
