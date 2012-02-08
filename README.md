@@ -37,12 +37,12 @@ metaflac.showMD5Sum([], './beautiful-song.flac', function (err, sum) {
 });
 ```
 
-### Show Blocksize
+### Blocksize
 
-__metaflac.showMinBlocksize(options, file, callback)__
+__metaflac.showMinBlocksize(options, file, callback)__ Show the minimum block size from the STREAMINFO block. Same as `--show-min-blocksize`.  
+__metaflac.showMaxBlocksize(options, file, callback)__ Show the maximum block size from the STREAMINFO block. Same as `--show-max-blocksize`.
 
-Show the minimum block size from the STREAMINFO block. Same as `--show-min-blocksize`.  
-The `options` argument is one the above _options_. `file` is the path to the FLAC file. The `callback` gets a _boolean_ as its first argument, the second argument is the blocksize.
+The `options` argument is one the above _options_. `file` is the path to the FLAC file. The `callback` gets a _boolean_ as its first argument indicating whether there was an error, the second argument is the blocksize.
 
 ```javascript
 metaflac.showMinBlocksize([], './beautiful-song.flac', function (err, blocksize) {
@@ -50,8 +50,6 @@ metaflac.showMinBlocksize([], './beautiful-song.flac', function (err, blocksize)
 	console.log('The minimum blocksize is', blocksize);
 });
 ```
-
-`--show-max-blocksize` Show the maximum block size from the STREAMINFO block. 
 
 ```javascript
 metaflac.showMaxBlocksize([], './beautiful-song.flac', function (err, blocksize) {
