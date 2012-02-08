@@ -1,12 +1,15 @@
 Metaflac
 ========
 
-A node.js wrapper for [metaflac][metaflac].
-
-This project aims to be a more or less complete wrapper for the
-`metaflac` command line utility. 
+This module aims to be a more or less complete wrapper for the
+[metaflac][metaflac] command line utility. 
 
 A work in progress.
+
+### Limitations
+
+ - Can only run one operation per execution
+ - Can only process one FLAC file per execution
 
 
 Functions
@@ -26,7 +29,7 @@ var mb = require('metaflac');
  - `noUTF8Convert` Do not convert tags from UTF-8 to local charset, or vice versa. This is useful for scripts, and setting tags in situations where the locale is wrong. 
  - `dontUsePadding` By default metaflac tries to use padding where possible to avoid rewriting the entire file if the metadata size changes. Use this option to tell metaflac to not take advantage of padding this way.
 
-### Show MD5 Sum
+### MD5 Sum
 
 `--show-md5sum` Show the MD5 signature from the STREAMINFO block. 
 
