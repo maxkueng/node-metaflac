@@ -39,9 +39,9 @@ metaflac.showMD5Sum([], './beautiful-song.flac', function (err, sum) {
 
 ### Show Blocksize
 
-__ metaflac.showMinBlocksize(options, file, callback) __
+__metaflac.showMinBlocksize(options, file, callback)__
 
-Show the minimum block size from the STREAMINFO block. Same as `--show-min-blocksize`. 
+Show the minimum block size from the STREAMINFO block. Same as `--show-min-blocksize`.  
 The `options` argument is one the above _options_. `file` is the path to the FLAC file. The `callback` gets a _boolean_ as its first argument, the second argument is the blocksize.
 
 ```javascript
