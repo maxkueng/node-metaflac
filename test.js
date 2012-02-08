@@ -2,8 +2,8 @@ var metaflac = require('./lib/metaflac');
 var path = require('path');
 var util = require('util');
 
-var filePath = 'data/Zeigeist - The Jade Motel/1 - Humanitarianism.flac';
-//var filePath = 'data/B12 - 1996 - Time Tourist (album)/10 - Redcell - Radiophonic Workshop.flac';
+//var filePath = 'data/Zeigeist - The Jade Motel/1 - Humanitarianism.flac';
+var filePath = 'data/B12 - 1996 - Time Tourist (album)/10 - Redcell - Radiophonic Workshop.flac';
 filePath = path.resolve(filePath);
 
 metaflac.showMD5sum([], filePath, function (err, sum) {
