@@ -116,12 +116,27 @@ var options = [
    `--export-tags-to=-` Export tags to a _Writable Stream_. Each line will be of the form NAME=VALUE. Specify `noUTF8Convert` option if necessary. 
 
  - __metaflac.importPictureFrom(options, fileName, picture, callback(err))__  
-   `--import-picture-from=FILENAME` Import a picture and store it in a PICTURE metadata block. Read below for more info.
+   `--import-picture-from=FILENAME` Import a picture and store it in a _PICTURE_ metadata block. Read below for more info.
 
  - __metaflac.importPictureFrom(options, fileName, specifiction, callback(err))__  
-   `--import-picture-from=SPECIFICATION` Import a picture and store it in a PICTURE metadata block.  
-   The _specification_ is a object with the following properties: `type`, `mimeType`, `dimensions`, `file`.  
-   
+   `--import-picture-from=SPECIFICATION` Import a picture and store it in a _PICTURE_ metadata block.  
+   The _specification_ is a object with the following properties: `type`, `mimeType`, `description`, `dimensions`, `file`.  
+
+  ```javascript
+   var options = {
+       'type' : 3,
+       'mimeType' : 'image/jpeg', 
+       'description' : 'Happy hippo', 
+       'dimensions' : '320x300x24/173', 
+       'file' : 'cover.jpg'
+   };
+  ```
+   - `type` is one of:
+     0. Other
+	 1. 32x32 pixels 'file icon' (PNG only)
+	 2. Other file icon
+	 3. Cover (front)
+	 4. Cover (baxk)
  
 
 
