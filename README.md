@@ -122,27 +122,27 @@ var options = [
    `--import-picture-from=SPECIFICATION` Import a picture and store it in a _PICTURE_ metadata block.  
    The _specification_ is a object with the following properties: `type`, `mimeType`, `description`, `dimensions`, `file`.
    - `type` (optional) is one of:
-     0. Other
-     1. 32x32 pixels 'file icon' (PNG only)
-     2. Other file icon
-     3. Cover (front) (DEFAULT)
-     4. Cover (back)
-     5. Leaflet page
-     6. Media (e.g. label side of CD)
-     7. Lead artist/lead performer/soloist
-     8. Artist/performer
-     9. Conductor
-     10. Band/Orchestra
-     11. Composer
-     12. Lyricist/text writer
-     13. Recording Location
-     14. During recording
-     15. During performance
-     16. Movie/video screen capture
-     17. A bright coloured fish
-     18. Illustration
-     19. Band/artist logotype
-     20. Publisher/Studio 
+     0: Other
+     1: 32x32 pixels 'file icon' (PNG only)
+     2: Other file icon
+     3: Cover (front) (DEFAULT)
+     4: Cover (back)
+     5: Leaflet page
+     6: Media (e.g. label side of CD)
+     7: Lead artist/lead performer/soloist
+     8: Artist/performer
+     9: Conductor
+     10: Band/Orchestra
+     11: Composer
+     12: Lyricist/text writer
+     13: Recording Location
+     14: During recording
+     15: During performance
+     16: Movie/video screen capture
+     17: A bright coloured fish
+     18: Illustration
+     19: Band/artist logotype
+     20: Publisher/Studio 
    - `mimeType` is optional; if left blank, it will be detected from the file. For best compatibility with players, use pictures with MIME type image/jpeg or image/png. The MIME type can also be --> to mean that `file` is actually a URL to an image, though this use is discouraged. 
    - `description` is optional; the default is an empty string.
    - `dimensions` The next part specfies the resolution and color information. If the MIME-TYPE is image/jpeg, image/png, or image/gif, you can usually leave this empty and they can be detected from the file. Otherwise, you must specify the width in pixels, height in pixels, and color depth in bits-per-pixel. If the image has indexed colors you should also specify the number of colors used. When manually specified, it is not checked against the file for accuracy. 
