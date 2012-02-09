@@ -143,8 +143,24 @@ var options = [
      18. Illustration
      19. Band/artist logotype
      20. Publisher/Studio 
-   - `mimeType` is optional; if left blank, it will be detected from the file. For best compatibility with players, use pictures with MIME type image/jpeg or image/png. The MIME type can also be --> to mean that FILE is actually a URL to an image, though this use is discouraged. 
+   - `mimeType` is optional; if left blank, it will be detected from the file. For best compatibility with players, use pictures with MIME type image/jpeg or image/png. The MIME type can also be --> to mean that `file` is actually a URL to an image, though this use is discouraged. 
+   - `description` is optional; the default is an empty string.
+   - `dimensions` The next part specfies the resolution and color information. If the MIME-TYPE is image/jpeg, image/png, or image/gif, you can usually leave this empty and they can be detected from the file. Otherwise, you must specify the width in pixels, height in pixels, and color depth in bits-per-pixel. If the image has indexed colors you should also specify the number of colors used. When manually specified, it is not checked against the file for accuracy. 
+   - `file` is the path to the picture file to be imported, or the URL if MIME type is --> 
  
+ - __metaflac.exportPictureTo(options, fileName, picture, callback(err))__  
+ `--export-picture-to=file` Export _PICTURE_ block to a file. The first _PICTURE_ block will be exported unless the `blockNumber` option is set to specify the exact metadata block to extract.
+
+ - __metaflac.addReplayGain ...__ NOT IMPLEMENTED  
+
+ - __metaflac.removeReplayGain(options, fileName, callback(err))__  
+  `--remove-replay-gain` Removes the ReplayGain tags.
+
+ - __metaflac.addSeekpoint(options, fileName, pattern, callback(err))__  
+   `--add-seekpoint={#|X|#x|#s}` Add seek points to a _SEEKTABLE_ block. Using #, a seek point at that sample number is added. Using X, a placeholder point is added at the end of a the table. Using #x, # evenly spaced seek points will be added, the first being at sample 0. Using #s, a seekpoint will be added every # seconds (# does not have to be a whole number; it can be, for example, 9.5, meaning a seekpoint every 9.5 seconds). If no _SEEKTABLE_ block exists, one will be created. If one already exists, points will be added to the existing table, and any duplicates will be turned into placeholder points. You may use many --add-seekpoint options; the resulting _SEEKTABLE_ will be the unique-ified union of all such values. Example: --add-seekpoint=100x --add-seekpoint=3.5s will add 100 evenly spaced seekpoints and a seekpoint every 3.5 seconds. 
+
+ - __metaflac.addPadding(options, fileName, length, callback(err))__  
+   `--add-padding=length` Add a padding block of the given length (in bytes). The overall length of the new block will be 4 + length; the extra 4 bytes is for the metadata block header.
 
 
 [metaflac]: http://flac.sourceforge.net/documentation_tools_metaflac.html
