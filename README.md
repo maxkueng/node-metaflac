@@ -96,4 +96,18 @@ var options = [
  - __metaflac.removeAllTags(options, fileName, name, value, function(err))__  
    `--set-tag=field` Add a tag. If there is currently no tag block, one will be created. 
 
+ - __metaflac.setTagFromFile ...__ NOT IMPLEMENTED  
+
+ - __metaflac.importTagsFrom(options, fileName, file, function(err))__  
+   `--import-tags-from=file` Import tags from a file. Each line should be of the form NAME=VALUE. Multi-line comments are currently not supported. Specify `noUTF8Convert` option if necessary. 
+
+ - __metaflac.importTagsFromStream(options, fileName, stream, function(err))__  
+   `--import-tags-from=-` Import tags from a _Readable Stream_. Each line should be of the form NAME=VALUE. Multi-line comments are currently not supported. Specify `noUTF8Convert` option if necessary. 
+
+ - __metaflac.exportTagsTo(options, fileName, file, function(err))__  
+   `--export-tags-to=file` Export tags to a file. Each line will be of the form NAME=VALUE. Specify `noUTF8Convert` option if necessary. 
+
+ - __metaflac.exportTagsToStream(options, fileName, stream, function(err))__  
+   `--export-tags-to=-` Export tags to a _Writable Stream_. Each line will be of the form NAME=VALUE. Specify `noUTF8Convert` option if necessary. 
+
 [metaflac]: http://flac.sourceforge.net/documentation_tools_metaflac.html
