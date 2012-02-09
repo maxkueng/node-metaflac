@@ -17,7 +17,7 @@ API
 Load the `metaflac` module
 
 ```javascript
-var mb = require('metaflac');
+var metaflac = require('metaflac');
 ```
 
 ### Options
@@ -164,6 +164,9 @@ var options = [
  - __metaflac.list(options, fileName, callback(err, metadataBlocks))__  
    `--list` Get one or more metadata blocks. By default, all metadata blocks are provided as JavaScript objects. Use the following options to change this behavior: `blockType`, `blockNumber`, `exceptBlockType`.
 
+ - __metaflac.vorbisComment(options, fileName, callback(err, comments))__  
+   Returns a JavaScript object containing all _VORBIS_COMMENT_ tags.
+
  - __metaflac.remove(options, fileName, callback(err))__  
    `--remove` Remove one or more metadata blocks. By default, all metadata blocks will be removed. Use the following options to change this behavior: `blockType`, `blockNumber`, `exceptBlockType`. Unless the `dontUsePadding` option is specified, the blocks will be replaced with padding. You may not remove the _STREAMINFO_ block. 
 
@@ -175,6 +178,21 @@ var options = [
 
  - __metaflac.sortPadding(options, fileName, callback(err))__  
    `--sort-padding` Move all _PADDING_ blocks to the end of the metadata and merge them into a single block.
+
+### Examples
+
+Print all VorbisComment tags
+
+```javascript
+metaflac.vorbisComment([], './songAboutButterflies.flac', function (err, comments) {
+	if (err) { console.log('we have a problem'); return; }
+
+	for (var name in comments) {
+		console.log(name, '=', comments[name]);
+	}
+});
+```
+
 
 
 [metaflac]: http://flac.sourceforge.net/documentation_tools_metaflac.html
