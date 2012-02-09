@@ -32,39 +32,69 @@ var mb = require('metaflac');
  - `blockType` (only for `list` and `remove` operations) Has a value of either a single block type or an array of block types to be included with this operation.
  - `exceptBlockType` (only for `list` and `remove` operations) Has a value of either a single block type or an array of block types to be excluded with this operation.
 
+#### Block Types
+
 The valid block types are: _STREAMINFO_, _PADDING_, _APPLICATION_, _SEEKTABLE_, _VORBIS_COMMENT_. You may narrow down the types of _APPLICATION_ blocks displayed as follows:
 
 `APPLICATION:abcd` The _APPLICATION_ block(s) whose textual representation of the 4-byte ID is "abcd"  
 `APPLICATION:0xXXXXXXXX` The _APPLICATION_ block(s) whose hexadecimal big-endian representation of the 4-byte ID is "0xXXXXXXXX". For the example "abcd" above the hexadecimal equivalalent is 0x61626364 
 
+#### Usage
+
+The `options` 
+
+```javascript
+var options = [
+	''noUTF8Convert
+];
+```
+
+
+
 ### Functions
 
-The `options` argument is an array containing none or more of the above _options_. 
+The `options` argument is an array containing none or more of the above _options_. Options with a value are represented as an array. Multiple values ara again represented as an array.
 
- - __metaflac.showMD5sum(options, fileName, function(err, md5sum))__
+Example:  
+```javascript
+var options = [
+	'noUTF8Convert', 
+	[ 'blockType', 'VORBIS_COMMENT' ], 
+	[ 'blockNumber', [2,3,5] ]
+];
+```
+
+ - __metaflac.showMD5sum(options, fileName, function(err, md5sum))__  
    `--show-md5sum` Show the MD5 signature from the STREAMINFO block. 
 
- - __metaflac.showMinBlocksize(options, fileName, function(err, size))__  
+ - __metaflac.showMinBlocksize(options, fileName, function(err, blocksize))__  
   `--show-min-blocksize` Show the minimum block size from the STREAMINFO block. 
 
+ - __metaflac.showMaxBlocksize(options, fileName, function(err, blocksize))__  
+   `--show-max-blocksize` Show the maximum block size from the STREAMINFO block. 
 
---show-max-blocksize
-    Show the maximum block size from the STREAMINFO block. 
---show-min-framesize
-    Show the minimum frame size from the STREAMINFO block. 
---show-max-framesize
-    Show the maximum frame size from the STREAMINFO block. 
---show-sample-rate
-    Show the sample rate from the STREAMINFO block. 
---show-channels
-    Show the number of channels from the STREAMINFO block. 
---show-bps
-    Show the # of bits per sample from the STREAMINFO block. 
---show-total-samples
-    Show the total # of samples from the STREAMINFO block. 
---show-vendor-tag
-    Show the vendor string from the VORBIS_COMMENT block. 
---show-tag=name
-    Show all tags where the the field name matches 'name'. 
+ - __metaflac.showMinFramesize(options, fileName, function(err, framesize))__  
+   `--show-min-framesize` Show the minimum frame size from the STREAMINFO block. 
+
+ - __metaflac.showMaxFramesize(options, fileName, function(err, framesize))__  
+   `--show-max-framesize` Show the maximum frame size from the STREAMINFO block. 
+
+ - __metaflac.showSampleRate(options, fileName, function(err, sampeRate))__  
+   `--show-sample-rate` Show the sample rate from the STREAMINFO block. 
+
+ - __metaflac.showChannels(options, fileName, function(err, channels))__  
+   `--show-channels` Show the number of channels from the STREAMINFO block. 
+
+ - __metaflac.showBps(options, fileName, function(err, bps))__  
+   `--show-bps` Show the # of bits per sample from the STREAMINFO block. 
+
+ - __metaflac.showTotalSamples(options, fileName, function(err, totalSamples))__  
+   `--show-total-samples` Show the total # of samples from the STREAMINFO block. 
+
+ - __metaflac.showVendorTag(options, fileName, function(err, vendorTag))__  
+   `--show-vendor-tag` Show the vendor string from the VORBIS_COMMENT block. 
+
+ - __metaflac.showTag(options, fileName, tag, function(err, value))__  
+   `--show-tag=name` Show all tags where the the field name matches 'name'. 
 
 [metaflac]: http://flac.sourceforge.net/documentation_tools_metaflac.html
