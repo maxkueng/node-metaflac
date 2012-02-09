@@ -114,6 +114,18 @@ var options = [
  - __metaflac.exportTagsToStream(options, fileName, stream, callback(err))__  
    `--export-tags-to=-` Export tags to a _Writable Stream_. Each line will be of the form NAME=VALUE. Specify `noUTF8Convert` option if necessary. 
 
+ - __metaflac.importCuesheetFrom(options, fileName, cuesheet, callback(err))__  
+   `--import-cuesheet-from=file` Import a cuesheet from a file. A seekpoint will be added for each index point in the cuesheet to the _SEEKTABLE_ unless the `noCuedSeekpoints` option is specified. 
+
+ - __metaflac.importCuesheetFrom(options, fileName, stream, callback(err))__  
+   `--import-cuesheet-from=-` Import a cuesheet from a _Readable Stream_. A seekpoint will be added for each index point in the cuesheet to the _SEEKTABLE_ unless the `noCuedSeekpoints` option is specified. 
+
+ - __metaflac.exportCuesheetTo(options, fileName, cuesheet, callback(err))__  
+`--export-cuesheet-to=file` Export _CUESHEET_ block to a cuesheet file, suitable for use by CD authoring software.
+
+ - __metaflac.exportCuesheetToStream(options, fileName, stream, callback(err))__  
+`--export-cuesheet-to=-` Export _CUESHEET_ block to a _Writable Stream_, suitable for use by CD authoring software.
+
  - __metaflac.importPictureFrom(options, fileName, picture, callback(err))__  
    `--import-picture-from=FILENAME` Import a picture and store it in a _PICTURE_ metadata block. Read below for more info.
 
@@ -149,6 +161,9 @@ var options = [
  
  - __metaflac.exportPictureTo(options, fileName, picture, callback(err))__  
  `--export-picture-to=file` Export _PICTURE_ block to a file. The first _PICTURE_ block will be exported unless the `blockNumber` option is set to specify the exact metadata block to extract.
+
+ - __metaflac.exportPictureToStream(options, fileName, stream, callback(err))__  
+ `--export-picture-to=-` Export _PICTURE_ block to a _Writable Stream_. The first _PICTURE_ block will be exported unless the `blockNumber` option is set to specify the exact metadata block to extract.
 
  - __metaflac.addReplayGain ...__ NOT IMPLEMENTED  
 
