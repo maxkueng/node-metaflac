@@ -42,8 +42,11 @@ The valid block types are: _STREAMINFO_, _PADDING_, _APPLICATION_, _SEEKTABLE_, 
 ### Functions
 
 The `options` argument is an array containing none or more of the above _options_. Options with a value are represented as an array. Multiple values ara again represented as an array.
+`fileName` is the path to the FLAC file.
+`callback` is a function that gets an error as boolean and sometimes a return value.
 
-Example:
+
+Options Example:
 
 ```javascript
 var options = [
@@ -53,63 +56,63 @@ var options = [
 ];
 ```
 
- - __metaflac.showMD5sum(options, fileName, function(err, md5sum))__  
+ - __metaflac.showMD5sum(options, fileName, callback(err, md5sum))__  
    `--show-md5sum` Show the MD5 signature from the _STREAMINFO_ block. 
 
- - __metaflac.showMinBlocksize(options, fileName, function(err, blocksize))__  
+ - __metaflac.showMinBlocksize(options, fileName, callback(err, blocksize))__  
   `--show-min-blocksize` Show the minimum block size from the _STREAMINFO_ block. 
 
- - __metaflac.showMaxBlocksize(options, fileName, function(err, blocksize))__  
+ - __metaflac.showMaxBlocksize(options, fileName, callback(err, blocksize))__  
    `--show-max-blocksize` Show the maximum block size from the _STREAMINFO_ block. 
 
- - __metaflac.showMinFramesize(options, fileName, function(err, framesize))__  
+ - __metaflac.showMinFramesize(options, fileName, callback(err, framesize))__  
    `--show-min-framesize` Show the minimum frame size from the _STREAMINFO_ block. 
 
- - __metaflac.showMaxFramesize(options, fileName, function(err, framesize))__  
+ - __metaflac.showMaxFramesize(options, fileName, callback(err, framesize))__  
    `--show-max-framesize` Show the maximum frame size from the _STREAMINFO_ block. 
 
- - __metaflac.showSampleRate(options, fileName, function(err, sampeRate))__  
+ - __metaflac.showSampleRate(options, fileName, callback(err, sampeRate))__  
    `--show-sample-rate` Show the sample rate from the _STREAMINFO_ block. 
 
- - __metaflac.showChannels(options, fileName, function(err, channels))__  
+ - __metaflac.showChannels(options, fileName, callback(err, channels))__  
    `--show-channels` Show the number of channels from the _STREAMINFO_ block. 
 
- - __metaflac.showBps(options, fileName, function(err, bps))__  
+ - __metaflac.showBps(options, fileName, callback(err, bps))__  
    `--show-bps` Show the # of bits per sample from the _STREAMINFO_ block. 
 
- - __metaflac.showTotalSamples(options, fileName, function(err, totalSamples))__  
+ - __metaflac.showTotalSamples(options, fileName, callback(err, totalSamples))__  
    `--show-total-samples` Show the total # of samples from the _STREAMINFO_ block. 
 
- - __metaflac.showVendorTag(options, fileName, function(err, vendorTag))__  
+ - __metaflac.showVendorTag(options, fileName, callback(err, vendorTag))__  
    `--show-vendor-tag` Show the vendor string from the _VORBIS_COMMENT_ block. 
 
- - __metaflac.showTag(options, fileName, name, function(err, value))__  
+ - __metaflac.showTag(options, fileName, name, callback(err, value))__  
    `--show-tag=name` Show all tags where the the field name matches 'name'. 
 
- - __metaflac.removeTag(options, fileName, name, function(err))__  
+ - __metaflac.removeTag(options, fileName, name, callback(err))__  
    `--remove-tag=name` Remove all tags whose field name is 'name'. 
 
- - __metaflac.removeFirstTag(options, fileName, name, function(err))__  
+ - __metaflac.removeFirstTag(options, fileName, name, callback(err))__  
    `--remove-first-tag=name` Remove first tag whose field name is 'name'. 
 
- - __metaflac.removeAllTags(options, fileName, function(err))__  
+ - __metaflac.removeAllTags(options, fileName, callback(err))__  
    `--remove-all-tags` Remove all tags, leaving only the vendor string. 
 
- - __metaflac.removeAllTags(options, fileName, name, value, function(err))__  
+ - __metaflac.removeAllTags(options, fileName, name, value, callback(err))__  
    `--set-tag=field` Add a tag. If there is currently no tag block, one will be created. 
 
  - __metaflac.setTagFromFile ...__ NOT IMPLEMENTED  
 
- - __metaflac.importTagsFrom(options, fileName, file, function(err))__  
+ - __metaflac.importTagsFrom(options, fileName, file, callback(err))__  
    `--import-tags-from=file` Import tags from a file. Each line should be of the form NAME=VALUE. Multi-line comments are currently not supported. Specify `noUTF8Convert` option if necessary. 
 
- - __metaflac.importTagsFromStream(options, fileName, stream, function(err))__  
+ - __metaflac.importTagsFromStream(options, fileName, stream, callback(err))__  
    `--import-tags-from=-` Import tags from a _Readable Stream_. Each line should be of the form NAME=VALUE. Multi-line comments are currently not supported. Specify `noUTF8Convert` option if necessary. 
 
- - __metaflac.exportTagsTo(options, fileName, file, function(err))__  
+ - __metaflac.exportTagsTo(options, fileName, file, callback(err))__  
    `--export-tags-to=file` Export tags to a file. Each line will be of the form NAME=VALUE. Specify `noUTF8Convert` option if necessary. 
 
- - __metaflac.exportTagsToStream(options, fileName, stream, function(err))__  
+ - __metaflac.exportTagsToStream(options, fileName, stream, callback(err))__  
    `--export-tags-to=-` Export tags to a _Writable Stream_. Each line will be of the form NAME=VALUE. Specify `noUTF8Convert` option if necessary. 
 
 [metaflac]: http://flac.sourceforge.net/documentation_tools_metaflac.html
