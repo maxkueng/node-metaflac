@@ -32,30 +32,17 @@ var mb = require('metaflac');
  - `blockType` (only for `list` and `remove` operations) Has a value of either a single block type or an array of block types to be included with this operation.
  - `exceptBlockType` (only for `list` and `remove` operations) Has a value of either a single block type or an array of block types to be excluded with this operation.
 
-#### Block Types
-
 The valid block types are: _STREAMINFO_, _PADDING_, _APPLICATION_, _SEEKTABLE_, _VORBIS_COMMENT_. You may narrow down the types of _APPLICATION_ blocks displayed as follows:
 
 `APPLICATION:abcd` The _APPLICATION_ block(s) whose textual representation of the 4-byte ID is "abcd"  
 `APPLICATION:0xXXXXXXXX` The _APPLICATION_ block(s) whose hexadecimal big-endian representation of the 4-byte ID is "0xXXXXXXXX". For the example "abcd" above the hexadecimal equivalalent is 0x61626364 
 
-#### Usage
-
-The `options` 
-
-```javascript
-var options = [
-	''noUTF8Convert
-];
-```
-
-
-
 ### Functions
 
 The `options` argument is an array containing none or more of the above _options_. Options with a value are represented as an array. Multiple values ara again represented as an array.
 
-Example:  
+Example:
+
 ```javascript
 var options = [
 	'noUTF8Convert', 
