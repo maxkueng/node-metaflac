@@ -52,36 +52,48 @@ var options = [
 ```
 
  - __metaflac.showMD5sum(options, fileName, function(err, md5sum))__  
-   `--show-md5sum` Show the MD5 signature from the STREAMINFO block. 
+   `--show-md5sum` Show the MD5 signature from the _STREAMINFO_ block. 
 
  - __metaflac.showMinBlocksize(options, fileName, function(err, blocksize))__  
-  `--show-min-blocksize` Show the minimum block size from the STREAMINFO block. 
+  `--show-min-blocksize` Show the minimum block size from the _STREAMINFO_ block. 
 
  - __metaflac.showMaxBlocksize(options, fileName, function(err, blocksize))__  
-   `--show-max-blocksize` Show the maximum block size from the STREAMINFO block. 
+   `--show-max-blocksize` Show the maximum block size from the _STREAMINFO_ block. 
 
  - __metaflac.showMinFramesize(options, fileName, function(err, framesize))__  
-   `--show-min-framesize` Show the minimum frame size from the STREAMINFO block. 
+   `--show-min-framesize` Show the minimum frame size from the _STREAMINFO_ block. 
 
  - __metaflac.showMaxFramesize(options, fileName, function(err, framesize))__  
-   `--show-max-framesize` Show the maximum frame size from the STREAMINFO block. 
+   `--show-max-framesize` Show the maximum frame size from the _STREAMINFO_ block. 
 
  - __metaflac.showSampleRate(options, fileName, function(err, sampeRate))__  
-   `--show-sample-rate` Show the sample rate from the STREAMINFO block. 
+   `--show-sample-rate` Show the sample rate from the _STREAMINFO_ block. 
 
  - __metaflac.showChannels(options, fileName, function(err, channels))__  
-   `--show-channels` Show the number of channels from the STREAMINFO block. 
+   `--show-channels` Show the number of channels from the _STREAMINFO_ block. 
 
  - __metaflac.showBps(options, fileName, function(err, bps))__  
-   `--show-bps` Show the # of bits per sample from the STREAMINFO block. 
+   `--show-bps` Show the # of bits per sample from the _STREAMINFO_ block. 
 
  - __metaflac.showTotalSamples(options, fileName, function(err, totalSamples))__  
-   `--show-total-samples` Show the total # of samples from the STREAMINFO block. 
+   `--show-total-samples` Show the total # of samples from the _STREAMINFO_ block. 
 
  - __metaflac.showVendorTag(options, fileName, function(err, vendorTag))__  
-   `--show-vendor-tag` Show the vendor string from the VORBIS_COMMENT block. 
+   `--show-vendor-tag` Show the vendor string from the _VORBIS_COMMENT_ block. 
 
- - __metaflac.showTag(options, fileName, tag, function(err, value))__  
+ - __metaflac.showTag(options, fileName, name, function(err, value))__  
    `--show-tag=name` Show all tags where the the field name matches 'name'. 
+
+ - __metaflac.removeTag(options, fileName, name, function(err))__  
+   `--remove-tag=name` Remove all tags whose field name is 'name'. 
+
+ - __metaflac.removeFirstTag(options, fileName, name, function(err))__  
+   `--remove-first-tag=name` Remove first tag whose field name is 'name'. 
+
+ - __metaflac.removeAllTags(options, fileName, function(err))__  
+   `--remove-all-tags` Remove all tags, leaving only the vendor string. 
+
+ - __metaflac.removeAllTags(options, fileName, name, value, function(err))__  
+   `--set-tag=field` Add a tag. If there is currently no tag block, one will be created. 
 
 [metaflac]: http://flac.sourceforge.net/documentation_tools_metaflac.html
