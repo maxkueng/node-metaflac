@@ -123,10 +123,10 @@ var options = [
    The _specification_ is a object with the following properties: `type`, `mimeType`, `description`, `dimensions`, `file`.
    - `type` (optional) is one of:
      0. Other
-	 1. 32x32 pixels 'file icon' (PNG only)
-	 2. Other file icon
-	 3. Cover (front) (DEFAULT)
-	 4. Cover (back)
+     1. 32x32 pixels 'file icon' (PNG only)
+     2. Other file icon
+     3. Cover (front) (DEFAULT)
+     4. Cover (back)
      5. Leaflet page
      6. Media (e.g. label side of CD)
      7. Lead artist/lead performer/soloist
