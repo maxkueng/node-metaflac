@@ -31,6 +31,8 @@ var mb = require('metaflac');
  - `blockNumber` (only for `list`, `remove` and  `exportPictureTo` operations) Has a value of either a single block number or an array of block numbers to display. The first block, the _STREAMINFO_ block, is block 0.
  - `blockType` (only for `list` and `remove` operations) Has a value of either a single block type or an array of block types to be included with this operation.
  - `exceptBlockType` (only for `list` and `remove` operations) Has a value of either a single block type or an array of block types to be excluded with this operation.
+ - `applicationDataFormat` (only for `list` operation) If the application block you are displaying contains binary data but your --data-format=text, you can display a hex dump of the application data contents instead using --application-data-format=hexdump. 
+ - `noCuedSeekpoints` (only for `importCuesheetFrom` operation) 
 
 The valid block types are: _STREAMINFO_, _PADDING_, _APPLICATION_, _SEEKTABLE_, _VORBIS_COMMENT_. You may narrow down the types of _APPLICATION_ blocks displayed as follows:
 
