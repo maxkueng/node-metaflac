@@ -115,4 +115,14 @@ var options = [
  - __metaflac.exportTagsToStream(options, fileName, stream, callback(err))__  
    `--export-tags-to=-` Export tags to a _Writable Stream_. Each line will be of the form NAME=VALUE. Specify `noUTF8Convert` option if necessary. 
 
+ - __metaflac.importPictureFrom(options, fileName, picture, callback(err))__  
+   `--import-picture-from=FILENAME` Import a picture and store it in a PICTURE metadata block. Read below for more info.
+
+ - __metaflac.importPictureFrom(options, fileName, specifiction, callback(err))__  
+   `--import-picture-from=SPECIFICATION` Import a picture and store it in a PICTURE metadata block.  
+   The _specification_ is a object with the following properties: `type`, `mimeType`, `dimensions`, `file`.  
+   
+ 
+
+
 [metaflac]: http://flac.sourceforge.net/documentation_tools_metaflac.html
