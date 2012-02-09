@@ -120,23 +120,30 @@ var options = [
 
  - __metaflac.importPictureFrom(options, fileName, specifiction, callback(err))__  
    `--import-picture-from=SPECIFICATION` Import a picture and store it in a _PICTURE_ metadata block.  
-   The _specification_ is a object with the following properties: `type`, `mimeType`, `description`, `dimensions`, `file`.  
-
-  ```javascript
-   var options = {
-       'type' : 3,
-       'mimeType' : 'image/jpeg', 
-       'description' : 'Happy hippo', 
-       'dimensions' : '320x300x24/173', 
-       'file' : 'cover.jpg'
-   };
-  ```
-   - `type` is one of:
+   The _specification_ is a object with the following properties: `type`, `mimeType`, `description`, `dimensions`, `file`.
+   - `type` (optional) is one of:
      0. Other
 	 1. 32x32 pixels 'file icon' (PNG only)
 	 2. Other file icon
-	 3. Cover (front)
-	 4. Cover (baxk)
+	 3. Cover (front) (DEFAULT)
+	 4. Cover (back)
+     5. Leaflet page
+     6. Media (e.g. label side of CD)
+     7. Lead artist/lead performer/soloist
+     8. Artist/performer
+     9. Conductor
+     10. Band/Orchestra
+     11. Composer
+     12. Lyricist/text writer
+     13. Recording Location
+     14. During recording
+     15. During performance
+     16. Movie/video screen capture
+     17. A bright coloured fish
+     18. Illustration
+     19. Band/artist logotype
+     20. Publisher/Studio 
+   - `mimeType` is optional; if left blank, it will be detected from the file. For best compatibility with players, use pictures with MIME type image/jpeg or image/png. The MIME type can also be --> to mean that FILE is actually a URL to an image, though this use is discouraged. 
  
 
 
