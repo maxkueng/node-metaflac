@@ -4,13 +4,12 @@ Metaflac
 This module aims to be a more or less complete wrapper for the
 [metaflac][metaflac] command line utility. 
 
-A work in progress.
+Most documentation ist shamelessly stolen from the [metaflac(1) man page][man].
 
-### Limitations
+#### Limitations
 
- - Can only run one operation per execution
- - Can only process one FLAC file per execution
-
+ - Can only run one operation at a time
+ - Can only process one FLAC at a time
 
 API
 ---
@@ -157,10 +156,26 @@ var options = [
   `--remove-replay-gain` Removes the ReplayGain tags.
 
  - __metaflac.addSeekpoint(options, fileName, pattern, callback(err))__  
-   `--add-seekpoint={#|X|#x|#s}` Add seek points to a _SEEKTABLE_ block. Using #, a seek point at that sample number is added. Using X, a placeholder point is added at the end of a the table. Using #x, # evenly spaced seek points will be added, the first being at sample 0. Using #s, a seekpoint will be added every # seconds (# does not have to be a whole number; it can be, for example, 9.5, meaning a seekpoint every 9.5 seconds). If no _SEEKTABLE_ block exists, one will be created. If one already exists, points will be added to the existing table, and any duplicates will be turned into placeholder points. You may use many --add-seekpoint options; the resulting _SEEKTABLE_ will be the unique-ified union of all such values. Example: --add-seekpoint=100x --add-seekpoint=3.5s will add 100 evenly spaced seekpoints and a seekpoint every 3.5 seconds. 
+   `--add-seekpoint={#|X|#x|#s}` Add seek points to a _SEEKTABLE_ block. Using #, a seek point at that sample number is added. Using X, a placeholder point is added at the end of a the table. Using #x, # evenly spaced seek points will be added, the first being at sample 0. Using #s, a seekpoint will be added every # seconds (# does not have to be a whole number; it can be, for example, 9.5, meaning a seekpoint every 9.5 seconds). If no _SEEKTABLE_ block exists, one will be created. If one already exists, points will be added to the existing table, and any duplicates will be turned into placeholder points.
 
  - __metaflac.addPadding(options, fileName, length, callback(err))__  
    `--add-padding=length` Add a padding block of the given length (in bytes). The overall length of the new block will be 4 + length; the extra 4 bytes is for the metadata block header.
 
+ - __metaflac.list(options, fileName, callback(err, metadataBlocks))__  
+   `--list` Get one or more metadata blocks. By default, all metadata blocks are provided as JavaScript objects. Use the following options to change this behavior: `blockType`, `blockNumber`, `exceptBlockType`.
+
+ - __metaflac.remove(options, fileName, callback(err))__  
+   `--remove` Remove one or more metadata blocks. By default, all metadata blocks will be removed. Use the following options to change this behavior: `blockType`, `blockNumber`, `exceptBlockType`. Unless the `dontUsePadding` option is specified, the blocks will be replaced with padding. You may not remove the _STREAMINFO_ block. 
+
+ - __metaflac.removeAll(options, fileName, callback(err))__  
+   `--remove-all` Remove all metadata blocks (except the _STREAMINFO_ block) from the metadata. Unless the `dontUsePadding` option is specified, the blocks will be replaced with padding. 
+
+ - __metaflac.mergePadding(options, fileName, callback(err))__  
+   `--merge-padding` Merge adjacent _PADDING_ blocks into single blocks. 
+
+ - __metaflac.sortPadding(options, fileName, callback(err))__  
+   `--sort-padding` Move all _PADDING_ blocks to the end of the metadata and merge them into a single block.
+
 
 [metaflac]: http://flac.sourceforge.net/documentation_tools_metaflac.html
+[man]: http://linux.die.net/man/1/metaflac
