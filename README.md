@@ -12,8 +12,8 @@ A work in progress.
  - Can only process one FLAC file per execution
 
 
-Functions
----------
+API
+---
 
 Load the `metaflac` module
 
@@ -28,65 +28,32 @@ var mb = require('metaflac');
  - `noFilename` Do not prefix each output line with the FLAC file name (the default if only one FLAC file is specified). 
  - `noUTF8Convert` Do not convert tags from UTF-8 to local charset, or vice versa. This is useful for scripts, and setting tags in situations where the locale is wrong. 
  - `dontUsePadding` By default metaflac tries to use padding where possible to avoid rewriting the entire file if the metadata size changes. Use this option to tell metaflac to not take advantage of padding this way.
+ - `blockNumber` (only for `list`, `remove` and  `exportPictureTo` operations) Has a value of either a single block number or an array of block numbers to display. The first block, the _STREAMINFO_ block, is block 0.
+ - `blockType` (only for `list` and `remove` operations) Has a value of either a single block type or an array of block types to be included with this operation.
+ - `exceptBlockType` (only for `list` and `remove` operations) Has a value of either a single block type or an array of block types to be excluded with this operation.
 
-### MD5 Sum
+The valid block types are: _STREAMINFO_, _PADDING_, _APPLICATION_, _SEEKTABLE_, _VORBIS_COMMENT_. You may narrow down the types of _APPLICATION_ blocks displayed as follows:
 
-`--show-md5sum` Show the MD5 signature from the STREAMINFO block. 
+`APPLICATION:abcd` The _APPLICATION_ block(s) whose textual representation of the 4-byte ID is "abcd"  
+`APPLICATION:0xXXXXXXXX` The _APPLICATION_ block(s) whose hexadecimal big-endian representation of the 4-byte ID is "0xXXXXXXXX". For the example "abcd" above the hexadecimal equivalalent is 0x61626364 
 
-```javascript
-metaflac.showMD5Sum([], './beautiful-song.flac', function (err, sum) {
-	if (err) { console.log('An error occurred'); return; }
-	console.log('The MD5 sum is', sum);
-});
-```
+### Functions
 
-### Blocksize
+The `options` argument is an array containing none or more of the above _options_. 
 
-__metaflac.showMinBlocksize(options, file, callback)__  
-Show the minimum block size from the STREAMINFO block. Same as `--show-min-blocksize`.
+ - __metaflac.showMD5sum(options, fileName, function(err, md5sum))__
+   `--show-md5sum` Show the MD5 signature from the STREAMINFO block. 
 
-__metaflac.showMaxBlocksize(options, file, callback)__  
-Show the maximum block size from the STREAMINFO block. Same as `--show-max-blocksize`.
-
-The `options` argument is one the above _options_. `file` is the path to the FLAC file. The `callback` gets a _boolean_ as its first argument indicating whether there was an error, the second argument is the blocksize.
-
-```javascript
-metaflac.showMinBlocksize([], './beautiful-song.flac', function (err, blocksize) {
-	if (err) { console.log('An error occurred'); return; }
-	console.log('The minimum blocksize is', blocksize);
-});
-```
-
-```javascript
-metaflac.showMaxBlocksize([], './beautiful-song.flac', function (err, blocksize) {
-	if (err) { console.log('An error occurred'); return; }
-	console.log('The maximum blocksize is', blocksize);
-});
-```
-
-### Show Framesize
-
-`--show-min-framesize` Show the minimum frame size from the STREAMINFO block. 
-
-```javascript
-metaflac.showMinFramesize([], './beautiful-song.flac', function (err, framesize) {
-	if (err) { console.log('An error occurred'); return; }
-	console.log('The minimum framesize is', framesize);
-});
-```
-
-`--show-max-framesize` Show the maximum frame size from the STREAMINFO block. 
-
-```javascript
-metaflac.showMaxFramesize([], './beautiful-song.flac', function (err, framesize) {
-	if (err) { console.log('An error occurred'); return; }
-	console.log('The maximum framesize is', framesize);
-});
-```
+ - __metaflac.showMinBlocksize(options, fileName, function(err, size))__  
+  `--show-min-blocksize` Show the minimum block size from the STREAMINFO block. 
 
 
-
-
+--show-max-blocksize
+    Show the maximum block size from the STREAMINFO block. 
+--show-min-framesize
+    Show the minimum frame size from the STREAMINFO block. 
+--show-max-framesize
+    Show the maximum frame size from the STREAMINFO block. 
 --show-sample-rate
     Show the sample rate from the STREAMINFO block. 
 --show-channels
@@ -98,6 +65,6 @@ metaflac.showMaxFramesize([], './beautiful-song.flac', function (err, framesize)
 --show-vendor-tag
     Show the vendor string from the VORBIS_COMMENT block. 
 --show-tag=name
-    Show all tags where the the field name matches 'name'.
+    Show all tags where the the field name matches 'name'. 
 
 [metaflac]: http://flac.sourceforge.net/documentation_tools_metaflac.html
