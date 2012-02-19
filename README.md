@@ -179,8 +179,8 @@ var options = [
  - __metaflac.list(options, fileName, callback(err, metadataBlocks))__  
    `--list` Get one or more metadata blocks. By default, all metadata blocks are provided as JavaScript objects. Use the following options to change this behavior: `blockType`, `blockNumber`, `exceptBlockType`.
 
- - __metaflac.vorbisComment(options, fileName, callback(err, comments))__  
-   Returns a JavaScript object containing all _VORBIS_COMMENT_ tags.
+ - __metaflac.vorbisComment(options, fileName, [keysToUpper], callback(err, comments))__  
+   Returns a JavaScript object containing all _VORBIS_COMMENT_ tags. If `keysToUpper` (optional) is true, all tag keys will be converted to upper case
 
  - __metaflac.remove(options, fileName, callback(err))__  
    `--remove` Remove one or more metadata blocks. By default, all metadata blocks will be removed. Use the following options to change this behavior: `blockType`, `blockNumber`, `exceptBlockType`. Unless the `dontUsePadding` option is specified, the blocks will be replaced with padding. You may not remove the _STREAMINFO_ block. 
